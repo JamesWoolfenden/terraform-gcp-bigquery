@@ -15,4 +15,8 @@ resource "google_bigquery_table" "example" {
   encryption_configuration {
     kms_key_name = google_kms_crypto_key.example.name
   }
+  deletion_protection = var.deletion_protection
+
+  labels = var.labels
 }
+
