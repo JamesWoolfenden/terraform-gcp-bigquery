@@ -16,23 +16,11 @@ resource "google_bigquery_job" "example" {
     script_options {
       key_result_statement = var.job.key_result_statement
     }
+
+    destination_encryption_configuration {
+      kms_key_name = google_kms_crypto_key.example.name
+    }
   }
 
-  #cant be set 11/2/2022
-  # destination_encryption_configuration {
-  #     kms_key_name=google_kms_crypto_key.example.name
-  # }
-}
-
-variable "job" {
-  type = object({
-    job_id              = string
-    query               = string
-    allow_large_results = bool
-    flatten_results     = bool
-
-
-    key_result_statement = string
-
-  })
+  labels = var.labels
 }

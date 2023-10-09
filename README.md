@@ -1,6 +1,6 @@
 # terraform-gcp-bigquery
 
-[![Build Status](https://github.com/JamesWoolfenden/terraform-gcp-bigquery/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-gcp-bigquery)
+[![Build Status](https://github.com/JamesWoolfenden/terraform-gcp-bigquery/workflows/Verify/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-gcp-bigquery)
 [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-gcp-bigquery.svg)](https://github.com/JamesWoolfenden/terraform-gcp-bigquery/releases/latest)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/JamesWoolfenden/terraform-gcp-bigquery.svg?label=latest)](https://github.com/JamesWoolfenden/terraform-gcp-bigquery/releases/latest)
 ![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.14.0-blue.svg)
@@ -66,15 +66,19 @@ No modules.
 | [google_bigquery_job.example](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigquery_job) | resource |
 | [google_bigquery_table.example](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigquery_table) | resource |
 | [google_kms_crypto_key.example](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/kms_crypto_key) | resource |
+| [google_kms_crypto_key_iam_binding.crypto_key](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/kms_crypto_key_iam_binding) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_dataset"></a> [dataset](#input\_dataset) | n/a | <pre>object({<br>    dataset_id                  = string<br>    friendly_name               = string<br>    description                 = string<br>    default_table_expiration_ms = number<br>  })</pre> | n/a | yes |
+| <a name="input_deletion_protection"></a> [deletion\_protection](#input\_deletion\_protection) | n/a | `bool` | `true` | no |
 | <a name="input_job"></a> [job](#input\_job) | n/a | <pre>object({<br>    job_id              = string<br>    query               = string<br>    allow_large_results = bool<br>    flatten_results     = bool<br><br><br>    key_result_statement = string<br><br>  })</pre> | n/a | yes |
 | <a name="input_key_name"></a> [key\_name](#input\_key\_name) | n/a | `string` | `"crypto-key-example"` | no |
+| <a name="input_key_users"></a> [key\_users](#input\_key\_users) | (optional) describe your variable | `list(string)` | n/a | yes |
 | <a name="input_keyring"></a> [keyring](#input\_keyring) | n/a | `any` | n/a | yes |
+| <a name="input_labels"></a> [labels](#input\_labels) | (optional) describe your variable | `map(string)` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | n/a | `string` | n/a | yes |
 | <a name="input_table"></a> [table](#input\_table) | n/a | <pre>object({<br>    table_id = string<br>    external_data_configuration = object({<br>      autodetect    = bool<br>      source_format = string<br>      google_sheets_options = object({<br>        skip_leading_rows = number<br>      })<br>      source_uris = list(string)<br>    })<br>  })</pre> | n/a | yes |
 
@@ -112,6 +116,31 @@ resource "google_project_iam_custom_role" "terraform_pike" {
 
 ## Information
 
+<!-- BEGINNING OF PRE-COMMIT-PIKE DOCS HOOK -->
+The Terraform resource required is:
+
+```golang
+
+resource "google_project_iam_custom_role" "terraform_pike" {
+  project     = "pike"
+  role_id     = "terraform_pike"
+  title       = "terraform_pike"
+  description = "A user with least privileges"
+  permissions = [
+    "bigquery.datasets.create",
+    "bigquery.jobs.create",
+    "cloudkms.cryptoKeyVersions.destroy",
+    "cloudkms.cryptoKeyVersions.list",
+    "cloudkms.cryptoKeys.create",
+    "cloudkms.cryptoKeys.get",
+    "cloudkms.cryptoKeys.update"
+  ]
+}
+
+
+```
+<!-- END OF PRE-COMMIT-PIKE DOCS HOOK -->
+
 ## Related Projects
 
 Check out these related projects.
@@ -132,7 +161,7 @@ Please use the [issue tracker](https://github.com/jameswoolfenden/terraform-aws-
 
 ## Copyrights
 
-Copyright © 2019-2022 James Woolfenden
+Copyright � 2019-2022 James Woolfenden
 
 ## License
 

@@ -1,1 +1,1 @@
-project = "pike"
+project = "pike-gcp"
