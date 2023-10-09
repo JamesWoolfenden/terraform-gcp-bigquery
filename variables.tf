@@ -26,8 +26,8 @@ variable "keyring" {
 }
 
 variable "deletion_protection" {
-  type = bool
-  default=true
+  type        = bool
+  default     = true
   description = ""
 }
 
@@ -54,11 +54,11 @@ variable "dataset" {
 }
 
 variable "labels" {
-  type = map(string)
+  type        = map(string)
   description = "(optional) describe your variable"
 }
 
 variable "key_users" {
-  type = list(string)
+  type        = list(string)
   description = "(optional) describe your variable"
 }

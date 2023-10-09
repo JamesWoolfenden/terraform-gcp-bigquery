@@ -31,7 +31,7 @@ module "bigquery" {
   }
 
   labels = {
-    pike="permissions"
+    pike = "permissions"
   }
   deletion_protection = false
   key_users = [

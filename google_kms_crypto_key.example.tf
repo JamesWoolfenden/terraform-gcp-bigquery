@@ -13,4 +13,3 @@ resource "google_kms_crypto_key_iam_binding" "crypto_key" {
 
   members = var.key_users
 }
-

@@ -24,4 +24,3 @@ resource "google_bigquery_job" "example" {
 
   labels = var.labels
 }
-
