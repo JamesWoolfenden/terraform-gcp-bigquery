@@ -1,5 +1,6 @@
 resource "google_bigquery_job" "example" {
-  job_id = var.job.job_id
+  job_id  = var.job.job_id
+  project = var.project
 
   query {
     query = var.job.query

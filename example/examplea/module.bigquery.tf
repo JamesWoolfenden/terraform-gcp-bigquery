@@ -1,5 +1,6 @@
 module "bigquery" {
-  source = "../../"
+  source  = "../../"
+  project = var.project
   table = {
     table_id = "sheet"
     external_data_configuration = {
@@ -39,4 +40,7 @@ module "bigquery" {
   ]
 }
 
-data "google_project" "current" {}
+
+data "google_project" "current" {
+  project_id = var.project
+}

@@ -1,3 +1,6 @@
+variable "project" {
+  type = string
+}
 
 variable "table" {
   type = object({

@@ -36,7 +36,6 @@ module "bigquery" {
   image              = var.image
   name               = var.name
   network_interface  = var.network_interface
-  project            = var.project
   service_email      = var.service_email
   source_cidrs       = var.source_cidrs
   zone               = var.zone
@@ -80,6 +79,7 @@ No modules.
 | <a name="input_keyring"></a> [keyring](#input\_keyring) | n/a | `any` | n/a | yes |
 | <a name="input_labels"></a> [labels](#input\_labels) | (optional) describe your variable | `map(string)` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | n/a | `string` | n/a | yes |
+| <a name="input_project"></a> [project](#input\_project) | n/a | `string` | n/a | yes |
 | <a name="input_table"></a> [table](#input\_table) | n/a | <pre>object({<br/>    table_id = string<br/>    external_data_configuration = object({<br/>      autodetect    = bool<br/>      source_format = string<br/>      google_sheets_options = object({<br/>        skip_leading_rows = number<br/>      })<br/>      source_uris = list(string)<br/>    })<br/>  })</pre> | n/a | yes |
 
 ## Outputs
@@ -95,7 +95,6 @@ The Terraform resource required is:
 ```golang
 
 resource "google_project_iam_custom_role" "terraform_pike" {
-  project     = "pike"
   role_id     = "terraform_pike"
   title       = "terraform_pike"
   description = "A user with least privileges"
@@ -122,7 +121,6 @@ The Terraform resource required is:
 ```golang
 
 resource "google_project_iam_custom_role" "terraform_pike" {
-  project     = "pike"
   role_id     = "terraform_pike"
   title       = "terraform_pike"
   description = "A user with least privileges"
@@ -161,7 +159,7 @@ Please use the [issue tracker](https://github.com/jameswoolfenden/terraform-aws-
 
 ## Copyrights
 
-Copyright � 2019-2023 James Woolfenden
+Copyright � 2019-2026 James Woolfenden
 
 ## License
 
