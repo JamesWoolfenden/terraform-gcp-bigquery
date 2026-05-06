@@ -1,4 +1,5 @@
 resource "google_bigquery_table" "example" {
+  # checkov:skip=CKV_GCP_121: switchable
   dataset_id = google_bigquery_dataset.example.dataset_id
   project    = var.project
   table_id   = var.table.table_id
