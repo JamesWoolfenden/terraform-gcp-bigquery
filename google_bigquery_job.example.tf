@@ -22,6 +22,4 @@ resource "google_bigquery_job" "example" {
       kms_key_name = google_kms_crypto_key.example.name
     }
   }
-
-  labels = var.labels
 }

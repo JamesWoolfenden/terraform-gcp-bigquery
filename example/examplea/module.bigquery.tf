@@ -32,9 +32,6 @@ module "bigquery" {
     key_result_statement = "LAST"
   }
 
-  labels = {
-    pike = "permissions"
-  }
   deletion_protection = false
   key_users = [
     "serviceAccount:service-${data.google_project.current.number}@gcp-sa-pubsub.iam.gserviceaccount.com",

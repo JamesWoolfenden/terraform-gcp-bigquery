@@ -10,6 +10,4 @@ resource "google_bigquery_dataset" "example" {
   default_encryption_configuration {
     kms_key_name = google_kms_crypto_key.example.name
   }
-
-  labels = var.labels
 }
