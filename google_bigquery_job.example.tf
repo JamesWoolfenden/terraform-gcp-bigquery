@@ -1,4 +1,4 @@
-resource "google_bigquery_job" "example" {
+resource "google_bigquery_job" "pike" {
   job_id  = var.job.job_id
   project = var.project
 
@@ -6,9 +6,9 @@ resource "google_bigquery_job" "example" {
     query = var.job.query
 
     destination_table {
-      project_id = google_bigquery_table.example.project
-      dataset_id = google_bigquery_table.example.dataset_id
-      table_id   = google_bigquery_table.example.table_id
+      project_id = google_bigquery_table.pike.project
+      dataset_id = google_bigquery_table.pike.dataset_id
+      table_id   = google_bigquery_table.pike.table_id
     }
 
     allow_large_results = var.job.allow_large_results
@@ -19,7 +19,7 @@ resource "google_bigquery_job" "example" {
     }
 
     destination_encryption_configuration {
-      kms_key_name = google_kms_crypto_key.example.name
+      kms_key_name = google_kms_crypto_key.bigquery.name
     }
   }
 }

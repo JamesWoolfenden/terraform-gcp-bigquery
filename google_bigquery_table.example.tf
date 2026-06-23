@@ -1,6 +1,6 @@
-resource "google_bigquery_table" "example" {
+resource "google_bigquery_table" "pike" {
   # checkov:skip=CKV_GCP_121: switchable
-  dataset_id = google_bigquery_dataset.example.dataset_id
+  dataset_id = google_bigquery_dataset.pike.dataset_id
   project    = var.project
   table_id   = var.table.table_id
 
@@ -15,7 +15,7 @@ resource "google_bigquery_table" "example" {
     source_uris = var.table.external_data_configuration.source_uris
   }
   encryption_configuration {
-    kms_key_name = google_kms_crypto_key.example.name
+    kms_key_name = google_kms_crypto_key.bigquery.name
   }
   deletion_protection = var.deletion_protection
 }
