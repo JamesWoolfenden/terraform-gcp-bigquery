@@ -1,5 +1,4 @@
 resource "google_kms_crypto_key" "bigquery" {
-  #checkov:skip=CKV_GCP_82: make modification via tf impossible
   # holden:ignore:HLD_GCP_019 — labels are inherited from the provider's default_labels
   name            = var.key_name
   key_ring        = var.keyring.name

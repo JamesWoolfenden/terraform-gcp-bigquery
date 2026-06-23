@@ -1,5 +1,4 @@
 resource "google_bigquery_table" "pike" {
-  # checkov:skip=CKV_GCP_121: switchable
   dataset_id = google_bigquery_dataset.pike.dataset_id
   project    = var.project
   table_id   = var.table.table_id

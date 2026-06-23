@@ -32,7 +32,7 @@ module "bigquery" {
     key_result_statement = "LAST"
   }
 
-  deletion_protection = false
+  deletion_protection = true
   key_users = [
     "serviceAccount:service-${data.google_project.current.number}@gcp-sa-pubsub.iam.gserviceaccount.com",
   ]
