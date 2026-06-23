@@ -33,12 +33,5 @@ module "bigquery" {
   }
 
   deletion_protection = true
-  key_users = [
-    "serviceAccount:service-${data.google_project.current.number}@gcp-sa-pubsub.iam.gserviceaccount.com",
-  ]
-}
-
-
-data "google_project" "current" {
-  project_id = var.project
+  key_users           = []
 }
